@@ -1,0 +1,44 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+<% flash.each do |type, msg| %>
+  <p>
+    <%= msg %>
+  </p>
+<% end %>
+
+<h1>Hello world</h1>
+
+<% if user_signed_in? || @current_user %>
+
+  <p>
+    You are signed in.
+  </p>
+
+<% else %>
+
+  <p>
+    You are not signed in.
+  </p>
+
+  <%= link_to "Sign In", new_user_session_path %>
+
+<% end %>
+
+<% if user_signed_in? %>
+
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+<% elsif @current_user %>
+
+  <%= link_to "Sign Out", signout_path %>
+
+<% end %>
+
+<p>
+  Test links unconditional:
+</p>
+<%= link_to "Sign Out (devise)", destroy_user_session_path, method: :delete %>
+<br/>
+<%= link_to "Sign Out (provider)", signout_path %>

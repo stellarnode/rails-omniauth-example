@@ -1,0 +1,47 @@
+
+<% flash.each do |type, msg| %>
+  <p>
+    <%= msg %>
+  </p>
+<% end %>
+
+<p>
+  ..............................
+</p>
+
+<h1>Hello, <%= current_user ? current_user['username'] || current_user['name'] : 'unknown user' %></h1>
+
+
+<%= link_to "Sign In", new_user_session_path %>
+
+
+<p>
+  ..............................
+</p>
+
+<p>
+  Test links CONDITIONAL:
+
+<% if user_signed_in? %>
+
+</p>
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<br/>
+
+<% else %>
+
+<p>
+  User is not signed in.
+</p>
+
+<% end %>
+
+<p>
+  ..............................
+</p>
+
+<p>
+  Test links unconditional:
+</p>
+<%= link_to "Sign Out (devise)", destroy_user_session_path, method: :delete %>
+<br/>
